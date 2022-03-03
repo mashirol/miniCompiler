@@ -38,22 +38,37 @@ EXPRESS完成语法树的构建，nud与led完成一些其他处理，核心在�
 
 
 var expression = function (rbp){
+
 var left; 
+
 var t =token; 
+
 advance();
+
 left= t.nud(); 
+
 while (rbp < token.lbp) {
+
 t=token; 
+
 advance(); 
+
 left= t.led(left); 
+
 }
+
 return left; 
+
 }
 
 led(left) {
+
 this.first = left;
+
 this.second = expression(50);
+
 return this;
+
 }
 
 
